@@ -1,2 +1,5 @@
 # Whats2App
-P2P Application for instant messaging in Java
+Una aplicación P2P de mensajería instantánea en Java.
+
+El servidor y el cliente se ejecutan con `runServer.bat` y `runClient.bat` respectivamente.
+

@@ -12,6 +12,7 @@ public class fachadaGUI {
         fachadaGUI fgui = new fachadaGUI(cc);
         VLogin vl = new VLogin(fgui, cc);
         vl.pack();
+        vl.setIconImage(loadLogo());
         vl.setVisible(true);
         vl.setLocationRelativeTo(null);
     }
@@ -32,8 +33,7 @@ public class fachadaGUI {
         vp.setName(cc.getUsername());
         vp.setTitle(cc.getUsername());
 
-        ImageIcon logoIcon = new ImageIcon("src/GUI/whats2appIcon.png");
-        Image logo = logoIcon.getImage();
+        Image logo = loadLogo();
 
         // Colocar logo de aplicación
         vp.setIconImage(logo);
@@ -52,7 +52,14 @@ public class fachadaGUI {
         VNotif vn = new VNotif(notif, priority);
         vn.pack();
         vn.setLocationRelativeTo(null);
+        vn.setIconImage(loadLogo());
         vn.setVisible(true);
+    }
+
+    public static Image loadLogo(){
+        ImageIcon logoIcon = new ImageIcon("src/GUI/whats2appIcon.png");
+        Image logo = logoIcon.getImage();
+        return logo;
     }
 
 

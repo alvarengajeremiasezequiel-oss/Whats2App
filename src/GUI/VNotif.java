@@ -1,6 +1,8 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.event.*;
 
 public class VNotif extends JDialog{
@@ -11,7 +13,19 @@ public class VNotif extends JDialog{
 
     public VNotif(String mensaje,boolean priority) {
         this.mensaje = mensaje;
-        createUIComponents();
+
+        panel1 = new JPanel(new BorderLayout(10, 10));
+        panel1.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+        MsgLabel = new JLabel(mensaje, SwingConstants.CENTER);
+        okButton = new JButton("OK");
+
+        JPanel buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
+        buttonsPanel.add(okButton);
+
+        panel1.add(MsgLabel, BorderLayout.CENTER);
+        panel1.add(buttonsPanel, BorderLayout.SOUTH);
+
         setContentPane(panel1);
         setModal(priority);
         getRootPane().setDefaultButton(okButton);
@@ -33,10 +47,5 @@ public class VNotif extends JDialog{
     private void onOK(){
         //MsgLabel.setText(mensaje);
         dispose();
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-        //MsgLabel.setText(mensaje);
     }
 }

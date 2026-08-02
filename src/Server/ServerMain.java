@@ -11,16 +11,12 @@ public class ServerMain {
         try {
             ServerInterface server = new ServerImpl();
 
-
             Scanner scanner = new Scanner(System.in);
 
             //System.out.println("\nIntroduce el puerto: ");
             //int p = scanner.nextInt();
             //scanner.close();
             int p = 1044;
-
-            // con los valores introducidos, se crea la URL del registro
-            // String URL = "rmi://localhost:" + puerto + "/interfaz";
 
             Registry registry = LocateRegistry.createRegistry(p);
             registry.rebind("ChatServer", server);

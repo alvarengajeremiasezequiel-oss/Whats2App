@@ -60,12 +60,11 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
         }
 
         try {
-            String realpassw = fbd.getUser(username).get(1);
-            if (realpassw == null) {
+            if (fbd.getUser(username) == null) {
                 throw new MsgExcep("El usuario no existe");
             }
 
-            if (!realpassw.equals(password)) {
+            if (!fbd.verifyPassword(username, password)) {
                 throw new MsgExcep("Clave incorrecta");
             }
 
@@ -185,8 +184,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     @Override
     public Boolean updateFriends(ClientPrivInterface clientPriv) throws RemoteException, MsgExcep {
         try {
-            String realpassw = fbd.getUser(clientPriv.getUsername()).get(1);
-            if (realpassw == null) {
+            if (fbd.getUser(clientPriv.getUsername()) == null) {
                 throw new MsgExcep("El usuario no está registrado");
             }
 
@@ -307,12 +305,11 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
 
     public Boolean changePassword(ClientPrivInterface clientpriv, String oldPassw, String newPassw) throws RemoteException, MsgExcep {
         try {
-            String realpassw = fbd.getUser(clientpriv.getUsername()).get(1);
-            if (realpassw == null) {
+            if (fbd.getUser(clientpriv.getUsername()) == null) {
                 throw new MsgExcep("El usuario no existe");
             }
 
-            if (!realpassw.equals(oldPassw)) {
+            if (!fbd.verifyPassword(clientpriv.getUsername(), oldPassw)) {
                 throw new MsgExcep("Clave incorrecta");
             }
 

@@ -1,0 +1,1 @@
+javac -d out src\Server\*.java src\Client\*.java src\GUI\*.java

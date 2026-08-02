@@ -3,6 +3,8 @@ package GUI;
 import Client.MsgExcep;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -23,6 +25,33 @@ public class VRegister extends JFrame {
     public VRegister(fachadaGUI fgui, clientController cc) {
         this.fgui = fgui;
         this.cc = cc;
+
+        contentPane = new JPanel(new GridLayout(2, 1, 0, 15));
+        contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+        usernameLabel = new JLabel("Nombre de usuario");
+        passwLabel = new JLabel("Contraseña");
+        repeatPasswLabel = new JLabel("Repita la contraseña");
+        usernameField = new JTextField();
+        passwField = new JPasswordField();
+        repeatPasswField = new JPasswordField();
+
+        JPanel fieldsPanel = new JPanel(new GridLayout(6, 1, 0, 5));
+        fieldsPanel.add(usernameLabel);
+        fieldsPanel.add(usernameField);
+        fieldsPanel.add(passwLabel);
+        fieldsPanel.add(passwField);
+        fieldsPanel.add(repeatPasswLabel);
+        fieldsPanel.add(repeatPasswField);
+
+        buttonRegister = new JButton("Registrarse");
+
+        JPanel buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
+        buttonsPanel.add(buttonRegister);
+
+        contentPane.add(fieldsPanel);
+        contentPane.add(buttonsPanel);
+
         setContentPane(contentPane);
         getRootPane().setDefaultButton(buttonRegister);
 

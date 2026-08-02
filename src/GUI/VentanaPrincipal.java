@@ -3,6 +3,7 @@ package GUI;
 import Client.MsgExcep;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -53,6 +54,123 @@ public class VentanaPrincipal extends JFrame {
     public VentanaPrincipal(fachadaGUI fgui, clientController cc) {
         this.fgui = fgui;
         this.cc = cc;
+
+        contentPane = new JPanel(new GridLayout(1, 1));
+        contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+        tabbedPane = new JTabbedPane();
+
+        // Tab Home
+        Home = new JPanel(new GridLayout(1, 2, 10, 0));
+
+        friendsScrollPane = new JScrollPane();
+        friendList = new JList();
+        friendsScrollPane.setViewportView(friendList);
+
+        unfriendButton = new JButton("Eliminar amistad");
+        JPanel friendsButtons = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
+        friendsButtons.add(unfriendButton);
+
+        JPanel friendsColumn = new JPanel(new GridLayout(2, 1, 0, 10));
+        friendsColumn.add(friendsScrollPane);
+        friendsColumn.add(friendsButtons);
+
+        friendChatLabel = new JLabel("");
+        youLabel = new JLabel("Tú");
+        JPanel chatHeader = new JPanel(new BorderLayout());
+        chatHeader.add(friendChatLabel, BorderLayout.WEST);
+        chatHeader.add(youLabel, BorderLayout.EAST);
+
+        chatScrollPane = new JScrollPane();
+        chat = new JList();
+        chatScrollPane.setViewportView(chat);
+
+        chatField = new JTextField();
+        enviarMensajeButton = new JButton("Enviar");
+        JPanel chatInput = new JPanel(new BorderLayout(10, 0));
+        chatInput.add(chatField, BorderLayout.CENTER);
+        chatInput.add(enviarMensajeButton, BorderLayout.EAST);
+
+        JPanel chatColumn = new JPanel(new BorderLayout(0, 10));
+        chatColumn.add(chatHeader, BorderLayout.NORTH);
+        chatColumn.add(chatScrollPane, BorderLayout.CENTER);
+        chatColumn.add(chatInput, BorderLayout.SOUTH);
+
+        Home.add(friendsColumn);
+        Home.add(chatColumn);
+
+        // Tab FriendRequests
+        FriendRequests = new JPanel(new GridLayout(2, 1, 0, 10));
+
+        friendReqScrollPane = new JScrollPane();
+        friendReqList = new JList();
+        friendReqScrollPane.setViewportView(friendReqList);
+
+        RequestLabel = new JLabel("");
+        aceptarReqButton = new JButton("Aceptar");
+        rechazarReqButton = new JButton("Rechazar");
+
+        JPanel reqButtons = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
+        reqButtons.add(aceptarReqButton);
+        reqButtons.add(rechazarReqButton);
+
+        JPanel reqRight = new JPanel(new GridLayout(2, 1, 0, 10));
+        reqRight.add(RequestLabel);
+        reqRight.add(reqButtons);
+
+        JPanel reqListPanel = new JPanel(new GridLayout(1, 2, 10, 0));
+        reqListPanel.add(friendReqScrollPane);
+        reqListPanel.add(reqRight);
+
+        addAmigoLabel = new JLabel("Añadir amigo");
+        addAmigoField = new JTextField();
+        addAmigoButton = new JButton("Enviar solicitud");
+
+        JPanel addAmigoPanel = new JPanel(new GridLayout(2, 1, 0, 5));
+        addAmigoPanel.add(addAmigoLabel);
+        JPanel addAmigoInput = new JPanel(new BorderLayout(10, 0));
+        addAmigoInput.add(addAmigoField, BorderLayout.CENTER);
+        addAmigoInput.add(addAmigoButton, BorderLayout.EAST);
+        addAmigoPanel.add(addAmigoInput);
+
+        FriendRequests.add(reqListPanel);
+        FriendRequests.add(addAmigoPanel);
+
+        // Tab Settings
+        Settings = new JPanel(new GridLayout(2, 1, 0, 15));
+
+        cambiarPasswLabel = new JLabel("Cambiar contraseña");
+        pLabel = new JLabel("Contraseña");
+        rpLabel = new JLabel("Repita la contraseña");
+        npLabel = new JLabel("Nueva contraseña");
+        passwField = new JPasswordField();
+        repeatPasswField = new JPasswordField();
+        newPasswField = new JPasswordField();
+
+        JPanel passwFields = new JPanel(new GridLayout(3, 2, 10, 5));
+        passwFields.add(pLabel);
+        passwFields.add(passwField);
+        passwFields.add(rpLabel);
+        passwFields.add(repeatPasswField);
+        passwFields.add(npLabel);
+        passwFields.add(newPasswField);
+
+        JPanel settingsTop = new JPanel(new GridLayout(2, 1, 0, 10));
+        settingsTop.add(cambiarPasswLabel);
+        settingsTop.add(passwFields);
+
+        cambiarPasswButton = new JButton("Confirmar");
+        JPanel settingsBottom = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
+        settingsBottom.add(cambiarPasswButton);
+
+        Settings.add(settingsTop);
+        Settings.add(settingsBottom);
+
+        tabbedPane.addTab("Home", Home);
+        tabbedPane.addTab("FriendRequests", FriendRequests);
+        tabbedPane.addTab("Settings", Settings);
+        contentPane.add(tabbedPane);
+
         setContentPane(contentPane);
         cc.setVPrincipal(this);
         friendList.setListData(friends);
@@ -406,9 +524,5 @@ public class VentanaPrincipal extends JFrame {
         nRequests = requests.size();
         if(!start) start = true;
 
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }

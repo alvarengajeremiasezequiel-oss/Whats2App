@@ -1,0 +1,1 @@
+java -cp "out;lib\sqlite-jdbc-3.50.3.0.jar" Server.ServerMain
