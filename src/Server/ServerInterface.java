@@ -21,13 +21,19 @@ public interface ServerInterface extends Remote {
     //Método para solicitar amistad
     Boolean friendRequest(String sourceUser, String targetUser) throws RemoteException, MsgExcep;
 
+
+    //Método para actualizar lista de amigos
     Boolean updateFriends(ClientPrivInterface client) throws RemoteException, MsgExcep;
 
+    //Eliminar amigo
     Boolean unfriend(String sourceUser, String targetUser) throws RemoteException, MsgExcep;
 
+    //Aceptar solicitud de amistad
     Boolean acceptRequest(String sourceUser, String targetUser) throws RemoteException, MsgExcep;
 
+    //Rechazar solicitud de amistad
     Boolean rejectRequest(String sourceUser, String targetUser) throws RemoteException, MsgExcep;
 
+    //Cambiar contraseña
     Boolean changePassword(ClientPrivInterface clientpriv, String oldPassw, String newPassw) throws RemoteException, MsgExcep;
 }

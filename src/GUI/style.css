@@ -1,0 +1,127 @@
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-background-color: #ece5dd;
+}
+
+.form-root {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 2);
+}
+
+.app-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #075E54;
+}
+
+.settings-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #075E54;
+}
+
+.notif-label {
+    -fx-font-size: 14px;
+    -fx-text-alignment: center;
+}
+
+.label {
+    -fx-text-fill: #333333;
+}
+
+.text-field, .password-field {
+    -fx-pref-height: 34px;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #d4d4d4;
+    -fx-background-color: #f7f7f7;
+    -fx-padding: 4 10 4 10;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #25D366;
+    -fx-background-color: #ffffff;
+}
+
+.button {
+    -fx-background-radius: 6;
+    -fx-padding: 8 18 8 18;
+    -fx-background-color: #25D366;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #1ebe5b;
+}
+
+.button:disabled {
+    -fx-opacity: 0.5;
+}
+
+.button-secondary {
+    -fx-background-color: #ece5dd;
+    -fx-text-fill: #075E54;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #d9cfc2;
+}
+
+.main-tabpane .tab-header-background {
+    -fx-background-color: #075E54;
+}
+
+.main-tabpane .tab {
+    -fx-background-color: #128C7E;
+}
+
+.main-tabpane .tab:selected {
+    -fx-background-color: #25D366;
+}
+
+.main-tabpane .tab .tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.list-view {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #e0d6c9;
+}
+
+.list-cell {
+    -fx-padding: 6 10 6 10;
+}
+
+.chat-friend-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #075E54;
+}
+
+.chat-you-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #128C7E;
+}
+
+.bubble {
+    -fx-padding: 8 12 8 12;
+    -fx-background-radius: 10;
+    -fx-text-fill: #111111;
+}
+
+.bubble-mine {
+    -fx-background-color: #DCF8C6;
+}
+
+.bubble-other {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e6e6e6;
+    -fx-border-radius: 10;
+}
