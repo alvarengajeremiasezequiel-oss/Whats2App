@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
@@ -108,9 +109,10 @@ public class MainView implements VistaPrincipal {
         friendChatLabel.getStyleClass().add("chat-friend-label");
         youLabel = new Label("Tú");
         youLabel.getStyleClass().add("chat-you-label");
-        HBox header = new HBox(10, friendChatLabel, youLabel);
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+        HBox header = new HBox(10, friendChatLabel, spacer, youLabel);
         header.setAlignment(Pos.CENTER_LEFT);
-        HBox.setHgrow(friendChatLabel, Priority.ALWAYS);
 
         chat = new ListView<>(chatMsgs);
         chat.setCellFactory(new Callback<ListView<Mensaje>, ListCell<Mensaje>>() {
@@ -160,7 +162,7 @@ public class MainView implements VistaPrincipal {
         HBox.setHgrow(right, Priority.ALWAYS);
         home.setPadding(new Insets(10));
 
-        return new Tab("Home", home);
+        return new Tab("Inicio", home);
     }
 
     private Tab buildRequestsTab() {
@@ -197,7 +199,7 @@ public class MainView implements VistaPrincipal {
         VBox container = new VBox(15, reqPanel, addAmigoLabel, addInput);
         container.setPadding(new Insets(10));
 
-        return new Tab("FriendRequests", container);
+        return new Tab("Solicitudes de amistad", container);
     }
 
     private Tab buildSettingsTab() {
@@ -229,7 +231,7 @@ public class MainView implements VistaPrincipal {
         settings.setAlignment(Pos.CENTER);
         settings.setPadding(new Insets(20));
 
-        return new Tab("Settings", settings);
+        return new Tab("Ajustes", settings);
     }
 
     private void onFriendSelected(String selected) {
@@ -238,14 +240,6 @@ public class MainView implements VistaPrincipal {
             enviarMensajeButton.setDisable(true);
             friendChatLabel.setText("");
             youLabel.setText("");
-            chatMsgs.clear();
-            return;
-        }
-        if (!onlineFriendsList.contains(selected)) {
-            unfriendButton.setDisable(false);
-            enviarMensajeButton.setDisable(true);
-            friendChatLabel.setText(selected + " (offline)");
-            youLabel.setText("Tú");
             chatMsgs.clear();
             return;
         }
