@@ -16,7 +16,7 @@ public class clientController {
     private ServerInterface server;
     private final String p = "1044";
     private final String addr = "localhost";
-    private VentanaPrincipal vp;
+    private VistaPrincipal vp;
 
     private void setServer() throws MsgExcep {
         try{
@@ -137,7 +137,7 @@ public class clientController {
         }
     }
 
-    public void setVPrincipal(VentanaPrincipal vp){
+    public void setVPrincipal(VistaPrincipal vp){
         this.vp = vp;
     }
 
